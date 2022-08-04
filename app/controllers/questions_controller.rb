@@ -1,21 +1,19 @@
 class QuestionsController < ApplicationController
+  before_action :set_question, only: %i[destroy edit show update]
+
   def create
-    question = Question.create(
-      body: params[:question][:body],
-      user_id: params[:question][:user_id]
-      )
+    question = Question.create(question_params)
 
     redirect_to question_path(question)
   end
 
   def destroy
-    Question.destroy(params[:id])
+    @question.destroy
 
     redirect_to questions_path
   end
 
   def edit
-    @question = Question.find(params[:id])
   end
 
   def index
@@ -27,16 +25,21 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
   end
 
   def update
-    @question = Question.find(params[:id])
-    @question.update(
-      body: params[:question][:body],
-      user_id: params[:question][:user_id]
-    )
+    @question.update(question_params)
 
     redirect_to question_path(@question)
+  end
+
+  private
+
+  def set_question
+    @question = Question.find(params[:id])
+  end
+
+  def question_params
+    params.require(:question).permit(:body, :user_id)
   end
 end
