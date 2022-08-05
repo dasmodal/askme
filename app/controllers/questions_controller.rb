@@ -16,8 +16,7 @@ class QuestionsController < ApplicationController
   def edit; end
 
   def hide
-    @question.hidden = true
-    @question.save
+    @question.update(hidden: true)
 
     redirect_to question_path
   end
