@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.by_recently_created
   end
 
   def new
