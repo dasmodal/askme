@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   root to: 'questions#index'
   
   resources :questions do
-    member do
-      put 'hide'
-    end
+    put :hide, on: :member
   end
 end

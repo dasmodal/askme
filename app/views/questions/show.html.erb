@@ -9,7 +9,7 @@
       <%= button_to fa_icon('trash-o'), question_path(@question), method: :delete, title: 'Удалить мурлык', form: { data: { turbo_confirm: 'Точно удалить мурлык?' } } %>
 
       <% unless @question.hidden? %>
-        <%= button_to fa_icon('eye-slash'), "#{question_path(@question)}/hide", method: :put, title: 'Скрыть мурлык',form: { data: { turbo_confirm: 'Точно скрыть мурлык?' } } %>
+        <%= button_to fa_icon('eye-slash'), hide_question_path, method: :put, title: 'Скрыть мурлык',form: { data: { turbo_confirm: 'Точно скрыть мурлык?' } } %>
       <% end %>
     </div>
 
