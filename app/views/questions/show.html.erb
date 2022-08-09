@@ -1,17 +1,7 @@
 <div class="container">
-    <h2 class="title-lg mb">Мяу <%= @question.id %></h2>
+    <h2 class="title-lg mb">Вопрос <%= @question.id %></h2>
 
-    <p class="mb-sm"><%= @question.body %></p>
-    <p>Для котеньки: <b><%= @question.user_id %></b></p>
+    <%= render 'question', question: @question %>
 
-    <div class="mt">
-      <%= link_to fa_icon('pencil'), edit_question_path(@question), title: 'Изменить мурлык' %>
-      <%= button_to fa_icon('trash-o'), question_path(@question), method: :delete, title: 'Удалить мурлык', form: { data: { turbo_confirm: 'Точно удалить мурлык?' } } %>
-
-      <% unless @question.hidden? %>
-        <%= button_to fa_icon('eye-slash'), hide_question_path, method: :put, title: 'Скрыть мурлык',form: { data: { turbo_confirm: 'Точно скрыть мурлык?' } } %>
-      <% end %>
-    </div>
-
-    <p class="mt"><%= link_to "Все мурлыки", questions_path %></p>
+    <p class="mt"><%= link_to "Все вопросы", questions_path %></p>
 </div>
