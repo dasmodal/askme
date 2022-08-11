@@ -16,7 +16,8 @@
         <p class="title-sm text-bold"><%= link_to 'Ask me!', root_path %></p>
         <div>
           <% if current_user.present? %>
-            <%= content_tag 'span', display_user(current_user), class: 'mt-sm' %>
+            <%= link_to display_user(current_user),
+                edit_user_path(current_user), class: 'mt-sm' %>
             <%= button_to 'Выйти', session_path, method: :delete %>
             <%= button_to fa_icon('circle'), change_header_color_user_path(current_user),
               method: :put,
