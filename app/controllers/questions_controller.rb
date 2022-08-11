@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
   def hide
     @question.update(hidden: true)
 
-    redirect_to question_path
+    redirect_to root_path
   end
 
   def index
