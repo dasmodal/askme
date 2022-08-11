@@ -11,6 +11,10 @@ a, button {
   opacity: 50%;
 }
 
+.break-text {
+  white-space: pre-line;
+}
+
 .title-lg {
   font-size: 175%;
 }
