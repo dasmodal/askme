@@ -13,9 +13,7 @@
   <body>
     <div class="wrapper">
       <div class="navbar <%= "navbar-#{current_user.header_color}" if current_user.present? %>">
-        <div class="mt-sm">
-          <p class="title-sm text-bold"><%= link_to 'Ask me!', root_path %></p>
-        </div>
+        <p class="title-sm text-bold"><%= link_to 'Ask me!', root_path %></p>
         <div>
           <% if current_user.present? %>
             <%= content_tag 'span', display_user(current_user), class: 'mt-sm' %>
