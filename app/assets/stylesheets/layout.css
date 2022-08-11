@@ -27,6 +27,14 @@ body {
   align-items: center;
 }
 
+.navbar-dark-sienna {
+  background-color: #370617;
+}
+
+.navbar-orange-web {
+  background-color: #faa307;
+}
+
 .navbar a {
   color: white;
   text-decoration: none;
