@@ -12,16 +12,13 @@
 
   <body>
     <div class="wrapper">
-      <div class="navbar <%= "navbar-#{current_user.header_color}" if current_user.present? %>">
+      <div class="navbar">
         <p class="title-sm text-bold"><%= link_to 'Ask me!', root_path %></p>
         <div>
           <% if current_user.present? %>
             <%= link_to display_user(current_user),
                 edit_user_path(current_user), class: 'mt-sm' %>
             <%= button_to 'Выйти', session_path, method: :delete %>
-            <%= button_to fa_icon('circle'), change_header_color_user_path(current_user),
-              method: :put,
-              class: header_color(current_user) %>
           <% else %>
             <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow mr-sm' %>
             <%= link_to 'Вход', new_session_path, class: 'button button-yellow mr-sm' %>

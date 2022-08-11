@@ -4,19 +4,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def change_header_color
-    user = User.find(params[:id])
-
-    if user.header_color == 'dark-sienna'
-      user.header_color = 'orange-web'
-    else
-      user.header_color = 'dark-sienna'
-    end
-
-    user.save
-    redirect_to request.referer
-  end
-
   def create
     @user = User.new(user_params)
 
@@ -58,7 +45,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :name, :nickname, :email, :password, :password_confirmation, :change_header_color
+      :name, :nickname, :email, :password, :password_confirmation
     )
   end
 end
