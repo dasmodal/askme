@@ -14,3 +14,9 @@
   box-sizing: border-box;
   width: 100%;
 }
+
+.form-color-field {
+  width: 40px;
+  border: 1px solid #d0d0d0;
+  padding: 2px;
+}
