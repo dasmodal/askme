@@ -21,6 +21,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def show
+    @user = User.find(params[:id])
+    @questions = @user.questions
+    @question = Question.new
+  end
+
   def update
     @user = User.find(params[:id])
 
