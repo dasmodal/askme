@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @questions = @user.questions
+    @questions = @user.questions.by_recently_created
     @question = Question.new(user: @user)
   end
 
