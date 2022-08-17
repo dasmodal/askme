@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[destroy edit hide show update]
+  before_action :ensure_current_user, only: %i[destroy edit hide update]
+  before_action :set_question_for_current_user, only: %i[destroy edit hide update]
 
   def create
     @question = Question.new(question_params)
@@ -36,7 +37,9 @@ class QuestionsController < ApplicationController
     @question = Question.new(user: @user)
   end
 
-  def show; end
+  def show
+    @question = Question.find(params[:id])
+  end
 
   def update
     if @question.update(question_params)
@@ -48,8 +51,12 @@ class QuestionsController < ApplicationController
 
   private
 
-  def set_question
-    @question = Question.find(params[:id])
+  def ensure_current_user
+    redirect_with_alert unless current_user.present?
+  end
+
+  def set_question_for_current_user
+    @question = current_user.questions.find(params[:id])
   end
 
   def question_params
