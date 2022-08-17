@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   before_action :set_question_for_current_user, only: %i[destroy edit hide update]
 
   def create
+    question_params = params.require(:question).permit(:body, :user_id)
     @question = Question.new(question_params)
 
     if @question.save
@@ -42,6 +43,8 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    question_params = params.require(:question).permit(:body, :answer)
+    
     if @question.update(question_params)
       redirect_to user_path(@question.user), notice: 'Сохранили вопрос!'
     else
@@ -57,9 +60,5 @@ class QuestionsController < ApplicationController
 
   def set_question_for_current_user
     @question = current_user.questions.find(params[:id])
-  end
-
-  def question_params
-    params.require(:question).permit(:body, :user_id)
   end
 end
