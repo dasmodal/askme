@@ -6,3 +6,8 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.no-messages-img {
+  width: 300px;
+  height: auto;
+}
