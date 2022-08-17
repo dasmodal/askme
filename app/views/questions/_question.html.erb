@@ -1,5 +1,10 @@
-<div class="mt-sm break-text <%= 'hidden-text' if question.hidden? %>">
-  <%= question.body %>
+<div class="mt-sm <%= 'hidden-text' if question.hidden? %>">
+  <% if question.author_id.present? %>
+    <p class="mt">Вопрос от <%= link_to display_user(question.author),
+      user_path(question.author) %>
+    </p>
+  <% end %>
+  <p class="mt break-text"><%= question.body %></p>
 </div>
 
 <% if question.answer.present? %>

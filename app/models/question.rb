@@ -1,5 +1,6 @@
 class Question < ApplicationRecord
   belongs_to :user
+  belongs_to :author, class_name: 'User'
   
   scope :by_recently_created, -> { order(created_at: :desc) }
 

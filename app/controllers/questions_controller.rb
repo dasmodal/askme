@@ -3,9 +3,10 @@ class QuestionsController < ApplicationController
   before_action :set_question_for_current_user, only: %i[destroy edit hide update]
 
   def create
-    question_params = params.require(:question).permit(:body, :user_id)
-    @question = Question.new(question_params)
+    question_params = params.require(:question).permit(:body, :user_id, :author_id)
+    question_params[:author] = current_user
 
+    @question = Question.new(question_params)
     if @question.save
       redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
     else
