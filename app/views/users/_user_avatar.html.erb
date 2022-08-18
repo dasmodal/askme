@@ -3,6 +3,6 @@
 
 <div class="users-box-user <%= background_class %> rounded mr ml">
   <a href="<%= user_path(user) %>">
-    <h1 class="title-lg text-bold"><%= nickname_letter %></h1>
+    <%= image_tag user.gravatar_url, title: display_user(user), class: 'rounded' %>
   </a>
 </div>
