@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     put :hide, on: :member
   end
   resource :session, only: %i[new create destroy]
-  resources :users, except: %i[index]
+  resources :users, except: %i[index], param: :nickname
 end
