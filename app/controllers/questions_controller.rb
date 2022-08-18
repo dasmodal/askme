@@ -31,7 +31,8 @@ class QuestionsController < ApplicationController
 
   def index
     @question = Question.new
-    @questions = Question.by_recently_created
+    @questions = Question.by_recently_created.last(10)
+    @users = User.by_recently_created.last(10)
   end
 
   def new
