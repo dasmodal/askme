@@ -39,6 +39,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
+    Question.where(author_id: @user).update(author_id: nil)
 
     session.delete(:user_id)
 
