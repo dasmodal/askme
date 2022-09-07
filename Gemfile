@@ -12,6 +12,7 @@ gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
+gem 'recaptcha'
 
 group :development, :test do
   gem 'pry-rails'
