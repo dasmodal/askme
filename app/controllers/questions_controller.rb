@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
     question_params[:author] = current_user
 
     @question = Question.new(question_params)
-    if @question.save
+    if verify_recaptcha && @question.save
       redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
     else
       render :new
