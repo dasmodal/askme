@@ -1,7 +1,9 @@
 class HashtagsController < ApplicationController
   def show
-    # binding.pry
-    # hashtag = Hashtag.with_questions.find_by!(text: params[:text])
-    # @questions = hashtag.questions.includes(:user)
+    @questions = Hashtag.find_by!(body: params[:body]).questions
+
+    if @questions.empty?
+      redirect_to root_path, alert: 'Нет вопросов с таким хэштегом. Будь первым!'
+    end
   end
 end
