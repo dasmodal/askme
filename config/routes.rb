@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'questions#index'
-  
+
+  resources :hashtags, only: %i[show], param: :body
   resources :questions do
     put :hide, on: :member
   end
