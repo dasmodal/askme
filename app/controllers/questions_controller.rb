@@ -35,6 +35,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
     @questions = Question.by_recently_created.first(10)
     @users = User.by_recently_created.first(10)
+    @hashtags = Hashtag.with_questions
   end
 
   def new
