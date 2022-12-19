@@ -13,6 +13,7 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'recaptcha'
+gem 'where_exists'
 
 group :development, :test do
   gem 'pry-rails'
