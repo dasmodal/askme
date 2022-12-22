@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     question_w_hashtags = QuestionWithHashtags.new(question: @question)
 
-    if verify_recaptcha && question_w_hashtags.save
+    if check_recaptcha(@question) && question_w_hashtags.save
       redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
     else
       render :new
@@ -59,6 +59,10 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def check_recaptcha(model)
+    current_user.present? || verify_recaptcha(model: model)
+  end
 
   def ensure_current_user
     redirect_with_alert unless current_user.present?
