@@ -7,7 +7,9 @@ class QuestionsController < ApplicationController
     question_params[:author] = current_user
 
     @question = Question.new(question_params)
-    if verify_recaptcha && @question.save
+    question_w_hashtags = QuestionWithHashtags.new(question: @question)
+
+    if verify_recaptcha && question_w_hashtags.save
       redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
     else
       render :new
@@ -33,6 +35,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
     @questions = Question.by_recently_created.first(10)
     @users = User.by_recently_created.first(10)
+    @hashtags = Hashtag.with_questions
   end
 
   def new
@@ -46,8 +49,9 @@ class QuestionsController < ApplicationController
 
   def update
     question_params = params.require(:question).permit(:body, :answer)
-    
-    if @question.update(question_params)
+    question_w_hashtags = QuestionWithHashtags.new(question: @question)
+
+    if question_w_hashtags.update(question_params)
       redirect_to user_path(@question.user), notice: 'Сохранили вопрос!'
     else
       render :new

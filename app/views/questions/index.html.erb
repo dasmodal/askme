@@ -11,6 +11,14 @@
 </div>
 
 <div class="container mt-sm">
+  <h2 class="title-lg">
+    Наши хэштеги
+  </h2>
+
+  <%= render @hashtags %>
+</div>
+
+<div class="container mt-sm">
   <h2 class="title-lg mb">
     <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
     <%= @questions.count %>

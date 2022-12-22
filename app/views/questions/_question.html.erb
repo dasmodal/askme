@@ -4,12 +4,12 @@
       user_path(question.author) %>
     </p>
   <% end %>
-  <p class="mt break-text"><%= question.body %></p>
+  <p class="mt break-text"><%= sanitize hashtags_link(question.body) %></p>
 </div>
 
 <% if question.answer.present? %>
   <div class="mt mb-sm text-dark-red">
-    <%= question.answer %>
+    <%= sanitize hashtags_link(question.answer) %>
   </div>
 <% end %>
 
